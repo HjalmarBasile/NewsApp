@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">News App</string>
 
+    <string name="background">Background</string>
+
     <string name="tools_article_title">Article Title</string>
     <string name="tools_article_author">John Doe</string>
     <string name="tools_article_date">2018 06 24</string>
