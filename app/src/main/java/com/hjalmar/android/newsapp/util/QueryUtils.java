@@ -40,7 +40,7 @@ public class QueryUtils {
      * The timeout in milliseconds when reading from the input stream when a connection is estabilished to a resource
      */
     private static final int READ_TIMEOUT = 10000;
-    
+
     private enum GuardianApiJsonTags {
         RESPONSE("response"), RESULTS("results"), TITLE("webTitle"),
         SECTION("sectionName"), DATE("webPublicationDate"), URL("webUrl"), TAGS("tags");
@@ -54,6 +54,10 @@ public class QueryUtils {
         public String tag() {
             return tag;
         }
+    }
+
+    private enum HttpRequestMethod {
+        GET, HEAD, POST, PUT, PATCH, DELETE, OPTIONS, TRACE
     }
 
     /**
@@ -110,7 +114,7 @@ public class QueryUtils {
         InputStream inputStream = null;
         try {
             urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setRequestMethod("GET");
+            urlConnection.setRequestMethod(HttpRequestMethod.GET.toString());
             urlConnection.setConnectTimeout(CONNECT_TIMEOUT);
             urlConnection.setReadTimeout(READ_TIMEOUT);
             urlConnection.connect();
