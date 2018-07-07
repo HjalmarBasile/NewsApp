@@ -18,6 +18,12 @@
     <!-- Settings Activity Title [CHAR LIMIT=NONE] -->
     <string name="settings_title">News Settings</string>
 
+    <!-- Strings used in the http query to request the guardian articles -->
+    <string name="request_parameter_value_api_key" translatable="false">83d8ae4b-e309-4d1f-bde5-d5bbe023d0e0</string>
+    <string name="request_parameter_value_format" translatable="false">json</string>
+    <string name="request_parameter_value_tag" translatable="false">games/games</string>
+    <string name="request_parameter_value_show_tags" translatable="false">contributor</string>
+
     <!-- Strings For Game Topic Preference [CHAR LIMIT=30] -->
     <string name="settings_game_topic_label">Game Topic</string>
     <string name="settings_game_topic_key" translatable="false">game_topic</string>

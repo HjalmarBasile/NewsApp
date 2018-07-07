@@ -119,10 +119,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         Uri.Builder uriBuilder = baseUri.buildUpon();
 
         // Append query parameters and their values
-        uriBuilder.appendQueryParameter(RequestParameterKey.API_KEY.tag(), "83d8ae4b-e309-4d1f-bde5-d5bbe023d0e0");
-        uriBuilder.appendQueryParameter(RequestParameterKey.FORMAT.tag(), "json");
-        uriBuilder.appendQueryParameter(RequestParameterKey.TAG.tag(), "games/games");
-        uriBuilder.appendQueryParameter(RequestParameterKey.SHOW_TAGS.tag(), "contributor");
+        uriBuilder.appendQueryParameter(RequestParameterKey.API_KEY.tag(), getString(R.string.request_parameter_value_api_key));
+        uriBuilder.appendQueryParameter(RequestParameterKey.FORMAT.tag(), getString(R.string.request_parameter_value_format));
+        uriBuilder.appendQueryParameter(RequestParameterKey.TAG.tag(), getString(R.string.request_parameter_value_tag));
+        uriBuilder.appendQueryParameter(RequestParameterKey.SHOW_TAGS.tag(), getString(R.string.request_parameter_value_show_tags));
         uriBuilder.appendQueryParameter(RequestParameterKey.Q.tag(), gameTopicSetting);
         uriBuilder.appendQueryParameter(RequestParameterKey.ORDER_BY.tag(), orderBySetting);
         
