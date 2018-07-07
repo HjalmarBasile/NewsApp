@@ -9,6 +9,8 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -105,7 +107,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         if (articles != null && !articles.isEmpty()) {
             mAdapter.addAll(articles);
         }
-        
+
         // We add the text to the empty View only after,
         // so it will get displayed only in case of failure
         mEmptyStateTextView.setText(R.string.news_not_found);
@@ -141,6 +143,24 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         }
 
         return isConnected;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_options, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        final int itemId = item.getItemId();
+        if (itemId == R.id.action_settings) {
+            Intent settingsIntent = new Intent(this, SettingsActivity.class);
+            startActivity(settingsIntent);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 }
