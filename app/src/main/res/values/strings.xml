@@ -17,4 +17,10 @@
 
     <!-- Settings Activity Title [CHAR LIMIT=NONE] -->
     <string name="settings_title">News Settings</string>
+
+    <!-- Strings For Game Topic Preference [CHAR LIMIT=30] -->
+    <string name="settings_game_topic_label">Game Topic</string>
+    <string name="settings_game_topic_key" translatable="false">game_topic</string>
+    <string name="settings_game_topic_default" translatable="false">The Last of Us 2</string>
+
 </resources>
