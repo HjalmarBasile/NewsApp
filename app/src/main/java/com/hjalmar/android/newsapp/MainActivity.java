@@ -4,10 +4,12 @@ import android.app.LoaderManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.Loader;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -29,8 +31,25 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     private static final int ARTICLE_LOADER_ID = 0;
 
-    private static final String GUARDIAN_REQUEST_URL = "https://content.guardianapis.com/search?tag=games/games&q=%22the%20last%20of%20us%22&show-tags=contributor&format=json&order-by=newest&api-key=83d8ae4b-e309-4d1f-bde5-d5bbe023d0e0";
+    private static final String GUARDIAN_REQUEST_URL = "https://content.guardianapis.com/search";
 
+    /**
+     * Keys used for the query parameters to build the http request
+     */
+    private enum RequestParameterKey {
+        API_KEY("api-key"), FORMAT("format"), TAG("tag"), SHOW_TAGS("show-tags"), Q("q"), ORDER_BY("order-by");
+
+        private final String tag;
+
+        RequestParameterKey(String tag) {
+            this.tag = tag;
+        }
+
+        public String tag() {
+            return tag;
+        }
+    }
+    
     /**
      * Adapter for the list of articles
      */
@@ -90,8 +109,24 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public Loader<List<Article>> onCreateLoader(int id, Bundle args) {
+        final SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+        // Retrieve a String value from the preferences.
+        final String gameTopic = defaultSharedPreferences.getString(getString(R.string.settings_game_topic_key), getString(R.string.settings_game_topic_default));
+
+        Uri baseUri = Uri.parse(GUARDIAN_REQUEST_URL);
+        Uri.Builder uriBuilder = baseUri.buildUpon();
+
+        // Append query parameters and their values
+        uriBuilder.appendQueryParameter(RequestParameterKey.API_KEY.tag(), "83d8ae4b-e309-4d1f-bde5-d5bbe023d0e0");
+        uriBuilder.appendQueryParameter(RequestParameterKey.FORMAT.tag(), "json");
+        uriBuilder.appendQueryParameter(RequestParameterKey.TAG.tag(), "games/games");
+        uriBuilder.appendQueryParameter(RequestParameterKey.SHOW_TAGS.tag(), "contributor");
+        uriBuilder.appendQueryParameter(RequestParameterKey.Q.tag(), gameTopic);
+        uriBuilder.appendQueryParameter(RequestParameterKey.ORDER_BY.tag(), "newest");
+
         // Create a new loader for the given URL
-        return new ArticleLoader(this, GUARDIAN_REQUEST_URL);
+        return new ArticleLoader(this, uriBuilder.toString());
     }
 
     @Override
