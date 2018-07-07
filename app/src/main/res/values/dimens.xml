@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="article_item_height">48dp</dimen>
+    <dimen name="article_item_padding_horizontal">16dp</dimen>
+    <dimen name="article_item_padding_vertical">8dp</dimen>
+
+    <item name="constraint_height_percent" format="float" type="dimen">0.5</item>
+    <item name="constraint_width_percent_primary" format="float" type="dimen">0.7</item>
+    <item name="constraint_width_percent_secondary" format="float" type="dimen">0.3</item>
+</resources>

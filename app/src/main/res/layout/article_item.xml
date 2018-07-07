@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight"
+    android:gravity="center_vertical"
+    android:paddingBottom="@dimen/article_item_padding_vertical"
+    android:paddingEnd="@dimen/article_item_padding_horizontal"
+    android:paddingStart="@dimen/article_item_padding_horizontal"
+    android:paddingTop="@dimen/article_item_padding_vertical">
+
+    <TextView
+        android:id="@+id/article_title"
+        style="@style/constraint_text_view"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textColor="@android:color/black"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="@dimen/constraint_height_percent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="@dimen/constraint_width_percent_primary"
+        tools:text="@string/tools_article_title" />
+
+    <TextView
+        android:id="@+id/article_authors"
+        style="@style/constraint_text_view"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:textAppearance="?android:textAppearanceSmall"
+        android:textColor="@android:color/darker_gray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="@dimen/constraint_height_percent"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="@dimen/constraint_width_percent_primary"
+        tools:text="@string/tools_article_author" />
+
+    <TextView
+        android:id="@+id/article_section"
+        style="@style/constraint_text_view"
+        android:gravity="center_vertical|end"
+        android:textAppearance="?android:textAppearanceSmall"
+        android:textColor="@android:color/darker_gray"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="@dimen/constraint_height_percent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="@dimen/constraint_width_percent_secondary"
+        tools:text="@string/tools_article_section" />
+
+    <TextView
+        android:id="@+id/article_date"
+        style="@style/constraint_text_view"
+        android:gravity="center_vertical|end"
+        android:textAppearance="?android:textAppearanceSmall"
+        android:textColor="@android:color/darker_gray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="@dimen/constraint_height_percent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="@dimen/constraint_width_percent_secondary"
+        tools:text="@string/tools_article_date" />
+
+</android.support.constraint.ConstraintLayout>
