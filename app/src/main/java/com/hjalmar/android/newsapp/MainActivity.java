@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             return tag;
         }
     }
-    
+
     /**
      * Adapter for the list of articles
      */
@@ -111,8 +111,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     public Loader<List<Article>> onCreateLoader(int id, Bundle args) {
         final SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-        // Retrieve a String value from the preferences.
-        final String gameTopic = defaultSharedPreferences.getString(getString(R.string.settings_game_topic_key), getString(R.string.settings_game_topic_default));
+        // Retrieve preferences settings
+        final String gameTopicSetting = defaultSharedPreferences.getString(getString(R.string.settings_game_topic_key), getString(R.string.settings_game_topic_default));
+        final String orderBySetting = defaultSharedPreferences.getString(getString(R.string.settings_order_by_key), getString(R.string.settings_order_by_default));
 
         Uri baseUri = Uri.parse(GUARDIAN_REQUEST_URL);
         Uri.Builder uriBuilder = baseUri.buildUpon();
@@ -122,9 +123,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         uriBuilder.appendQueryParameter(RequestParameterKey.FORMAT.tag(), "json");
         uriBuilder.appendQueryParameter(RequestParameterKey.TAG.tag(), "games/games");
         uriBuilder.appendQueryParameter(RequestParameterKey.SHOW_TAGS.tag(), "contributor");
-        uriBuilder.appendQueryParameter(RequestParameterKey.Q.tag(), gameTopic);
-        uriBuilder.appendQueryParameter(RequestParameterKey.ORDER_BY.tag(), "newest");
-
+        uriBuilder.appendQueryParameter(RequestParameterKey.Q.tag(), gameTopicSetting);
+        uriBuilder.appendQueryParameter(RequestParameterKey.ORDER_BY.tag(), orderBySetting);
+        
         // Create a new loader for the given URL
         return new ArticleLoader(this, uriBuilder.toString());
     }
