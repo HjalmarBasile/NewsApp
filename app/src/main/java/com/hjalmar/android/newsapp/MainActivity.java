@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             this.tag = tag;
         }
 
-        public String tag() {
+        String tag() {
             return tag;
         }
     }
@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         uriBuilder.appendQueryParameter(RequestParameterKey.SHOW_TAGS.tag(), getString(R.string.request_parameter_value_show_tags));
         uriBuilder.appendQueryParameter(RequestParameterKey.Q.tag(), gameTopicSetting);
         uriBuilder.appendQueryParameter(RequestParameterKey.ORDER_BY.tag(), orderBySetting);
-        
+
         // Create a new loader for the given URL
         return new ArticleLoader(this, uriBuilder.toString());
     }

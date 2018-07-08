@@ -51,7 +51,7 @@ public class QueryUtils {
             this.tag = tag;
         }
 
-        public String tag() {
+        String tag() {
             return tag;
         }
     }

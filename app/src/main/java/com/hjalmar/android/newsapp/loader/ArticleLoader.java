@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class ArticleLoader extends AsyncTaskLoader<List<Article>> {
 
-    private String mUrl;
+    private final String mUrl;
 
     public ArticleLoader(Context context, String url) {
         super(context);
